@@ -14,7 +14,7 @@ if(password.length !== 10) return false;
 if (!/\d/.test(password)) return false;
 if (!/[a-zA-Z]/.test(password)) return false;
 if (!/^[a-zA-Z0-9]+$/.test(password)) return false;
-if (/^[A-Z0-9]+$/.test(password) || /^[a-z0-9]+$/.test(password)) return false;
+if (/^[A-Z0-9]+$/.test(password) | /^[a-z0-9]+$/.test(password)) return false;
 if (forbiddenPasswords.includes(password)) return false;
 
 const passwordSequence = ['0123456789', '9876543210'];
