@@ -15,6 +15,7 @@ const specialCharsRegex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/
 const checkCharAndNumRegex = /^[a-zA-Z0-9]$/
 const atLeastOneCharRegex = /^[a-zA-Z]/
 const atleastOneNumberRegex = /\d/
+const stringLengthRegex = /^.{10}$/
 
 if(password.length !== 10) return false;
 if(checkCharAndNumRegex.test(password)) return true;
