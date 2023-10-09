@@ -5,12 +5,6 @@
  */
 
 // FUNCTION 1
-export default function cntRbt(ls) {
-  var count = 0;
-  for (var i = 0; i < ls.length; i++) {
-    if (ls[i] == "R") {
-      cnt++;
-    }
-  }
-  return count;
+export default function countR(enteredString) {
+  return enteredString.length !== 0 ? (enteredString.match(/R/g).length) : "";
 }
