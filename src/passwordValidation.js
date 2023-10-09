@@ -11,16 +11,21 @@ export default function isValidPassword(password = "") {
   if (typeof password !== "string") password = String(password);
 
   // * * * YOUR CODE GOES IN HERE ... * * *
-  /*
-   * if (password is not exactly 10 digits or characters...) {
-   *   return ...;
-   * }
-   *
-   * if (is not composed by digits and numbers) {
-   *   return ...;
-   * }
-   */
-  const setOfPassword = new Set([...password]);
+const specialCharsRegex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/
+const checkCharAndNumRegex = /^[a-zA-Z0-9]$/
+const atLeastOneCharRegex = /^[a-zA-Z]/
+const atleastOneNumberRegex = /\d/
+
+if(password.length !== 10) return false;
+if(checkCharAndNumRegex.test(password)) return true;
+if(specialCharsRegex.test(password)) return false;
+if(atLeastOneCharRegex.test(password)) return false;
+if(atleastOneNumberRegex.test(password)) return false;
+if(forbiddenPasswords.includes(password)) return false;
+
+
+
+const setOfPassword = new Set([...password]);
   if (setOfPassword.size < 4) return false;
-  return true;
+  return true
 }
