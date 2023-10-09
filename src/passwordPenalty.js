@@ -9,8 +9,14 @@ export default function penaltyPoints(password = "") {
   // The following line ensures, that password is always a string, like the number 128 -> string "128"
   if (typeof password !== "string") password = String(password);
 
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  // * * * INSERT YOUR CODE HERE * * * * * * * * * * * * * *
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  //
+  if (!password || password === "" || password == "null") return 0;
+
+  
+  const duplicateNums = password.match(/(\d)\1+/);
+  const duplicateLetters = password.match(/(\w)\1+/);
+
+  let repeats = duplicateNums ? duplicateNums[0].length : 0;
+  repeats += duplicateLetters ? duplicateLetters[0].length : 0;
+
+  return repeats === 0 ? 0 : repeats <= 2 ? 1 : 2;
 }
