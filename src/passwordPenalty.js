@@ -9,17 +9,16 @@ export default function penaltyPoints(password = "") {
   // The following line ensures, that password is always a string, like the number 128 -> string "128"
   if (typeof password !== "string") password = String(password);
 
-  if(password == 'null') return 0
-  
-  let re = /(.)\1+/g
-  let penalty = 0;
-  let matches = password.match(re);
+  if (password == "null") return 0;
+  // find and match repeated characters in a string
+  const regex = /(.)\1+/g;
+  const matches = password.match(regex);
 
-  if(matches){
-    matches.forEach(match => {
-      penalty += match.length >= 3? 2 : 1;
-    })
-  } else penalty = 0
-
-  return penalty;
+  if (matches) {
+    const penalty = matches.reduce((acc, match) => {
+      return acc + (match.length >= 3 ? 2 : 1);
+    }, 0);
+    return penalty;
+  }
+  return 0;
 }
