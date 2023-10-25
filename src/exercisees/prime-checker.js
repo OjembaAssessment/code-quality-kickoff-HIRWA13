@@ -1,4 +1,4 @@
-function checkPrime(number, divisor = 2) {
+const checkPrime = (number, divisor = 2) =>{
   if (number < 2) return false;
   if (number % divisor === 0) return false;
   return true
